@@ -1,0 +1,20 @@
+{
+    "name": "nightwatch_2.0_training_project",
+    "version": "0.0.1",
+    "description": "Nightwatch.js Automation: Training",
+    "author": "James Beard",
+    "license": "GNU",
+    "directories": {
+        "report": "reports"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "chromedriver": "latest",
+        "dotenv": "latest",
+        "nightwatch": "latest",
+        "nightwatch-html-reporter": "^2.0.6"
+    },
+    "scripts": {
+        "test": "nightwatch --tags test --skiptags null --reporter ./html-reporters/test/basic-html-reporter.js"
+    }
+}
