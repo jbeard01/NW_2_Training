@@ -2,7 +2,7 @@ const constants = require('../constants'); // reference to hardcoded constants f
 
 module.exports = {
 
-    '@tags': ['test'], // tags to target for run script
+    '@tags': ['null'], // tags to target for run script
 
     /*
     The objective of this module is to learn how to find elements (buttons in this case), and interact with them using various selector strategies.
@@ -31,6 +31,7 @@ module.exports = {
 
     // beforeEach: function(browser){
     //     browser.url(process.env.URL);
+    //     browser.waitForElementPresent('body', 3000);
     // },
 
     // afterEach: function(browser){
