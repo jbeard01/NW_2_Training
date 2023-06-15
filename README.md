@@ -39,6 +39,10 @@ Examples: Basics script running
  - Create a file in the root directory called .env
  - add the following: URL=https://qa-practice.netlify.app/index.html
 
+## To get reporting, create a reports directory, with a html-reports folder
+ - in the root directory create the "reports" directory
+ - inside the reports directory, create a new directory called "html-reports"
+
 ## This is your stock Nightwatch tool box (does not include custom commands written for this project)
 
 Assertion command list examples: //node_modules/nightwatch/lib/api/asertions/

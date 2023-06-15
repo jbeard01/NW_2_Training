@@ -7,10 +7,12 @@ module.exports = {
             xpath
        https://nightwatchjs.org/api/commands/#element
     */
-    SELECTORS: {
+       SELECTORS: {
         CSS: 'css selector',
         XPATH: 'xpath',
-        TAGNAME: 'tag name'
+        TAGNAME: 'tag name',
+        LINK: 'link text',
+        PARTIAL_LINK: 'partial link text'
     },
     PAUSE: {
         pauseFor1: '1000',

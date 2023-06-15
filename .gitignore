@@ -4,6 +4,7 @@ node_modules
 #reports and screen shots
 reports/html-reports
 screens/
+logs
 
 #system files
 .DS_Store

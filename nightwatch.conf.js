@@ -1,72 +1,154 @@
-const chrome = require('chromedriver')
-const Services = {}; loadServices();
+//
+// Refer to the online docs for more details:
+// https://nightwatchjs.org/guide/configuration/nightwatch-configuration-file.html
+//
+//  _   _  _         _      _                     _          _
+// | \ | |(_)       | |    | |                   | |        | |
+// |  \| | _   __ _ | |__  | |_ __      __  __ _ | |_   ___ | |__
+// | . ` || | / _` || '_ \ | __|\ \ /\ / / / _` || __| / __|| '_ \
+// | |\  || || (_| || | | || |_  \ V  V / | (_| || |_ | (__ | | | |
+// \_| \_/|_| \__, ||_| |_| \__|  \_/\_/   \__,_| \__| \___||_| |_|
+//             __/ |
+//            |___/
+//
 
 module.exports = {
-    src_folders: ["e2e/test-scripts"], 
-    output_folder: "reports",
-    constants: ["e2e"],
-    custom_commands_path: ["e2e/custom-commands"],
-    page_objects_path: ["e2e/pages"],
+  // An array of folders (excluding subfolders) where your tests are located;
+  // if this is not specified, the test source must be passed as the second argument to the test runner.
+  src_folders: ["e2e/test-scripts"], 
 
-    test_settings: {
-      default: {
-        launch_url: process.env.URL,
-        globals: {
-          waitForConditionTimeout: 10000,
-          skip_testcases_on_fail: false,
-          end_session_on_fail: false
-        },
-        disable_error_log: false,
-        screenshots: {
-          enabled: true,
-          path: 'screens',
-          on_failure: true
-        },
+  // See https://nightwatchjs.org/guide/concepts/page-object-model.html
+  page_objects_path: ["e2e/pages"],
+
+  // See https://nightwatchjs.org/guide/extending-nightwatch/adding-custom-commands.html
+  custom_commands_path: ["e2e/custom-commands"],
+
+  // See https://nightwatchjs.org/guide/extending-nightwatch/adding-custom-assertions.html
+  custom_assertions_path: '',
+
+  // See https://nightwatchjs.org/guide/extending-nightwatch/adding-plugins.html
+  plugins: [],
   
-        desiredCapabilities: {
-          browserName : 'chrome'
-        },
+  // See https://nightwatchjs.org/guide/concepts/test-globals.html#external-test-globals
+  globals_path : '',
+  constants: ["e2e"],
+  output_folder: "reports",
+
+  webdriver: {},
   
-        webdriver: {
-          start_process: true,
-          server_path: (Services.chromedriver ? Services.chromedriver.path : chrome.path)
+  test_workers: {
+    enabled: true,
+    workers: 'auto'
+  },
+
+  test_settings: {
+    default: {
+      disable_error_log: false,
+      launch_url: 'https://nightwatchjs.org',
+
+      screenshots: {
+        enabled: false,
+        path: 'screens',
+        on_failure: true
+      },
+
+      desiredCapabilities: {
+        browserName : 'chrome'
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: ''
+      }
+    },
+
+    safari: {
+      desiredCapabilities : {
+        browserName : 'safari',
+        alwaysMatch: {
+          acceptInsecureCerts: false
         }
       },
-      chrome: {
-        desiredCapabilities : {
-          browserName : 'chrome',
-          'goog:chromeOptions' : {
-            w3c: false,
+      webdriver: {
+        start_process: true,
+        server_path: ''
+      }
+    },
+
+    firefox: {
+      desiredCapabilities : {
+        browserName : 'firefox',
+        alwaysMatch: {
+          acceptInsecureCerts: true,
+          'moz:firefoxOptions': {
             args: [
-              'window-size=1190,914',
-              //'--no-sandbox',
-              //'--ignore-certificate-errors',
-              //'--allow-insecure-localhost',
-              //'--headless'
+              // '-headless',
+              // '-verbose'
             ]
           }
-        },
-        webdriver: {
-          start_process: true,
-          port: 9515,
-          server_path: (Services.chromedriver ? Services.chromedriver.path : chrome.path),
-          cli_args: [
-            // --verbose
+        }
+      },
+      webdriver: {
+        start_process: true,
+        server_path: '',
+        cli_args: [
+          // very verbose geckodriver logs
+          // '-vv'
+        ]
+      }
+    },
+
+    chrome: {
+      desiredCapabilities : {
+        browserName : 'chrome',
+        'goog:chromeOptions' : {
+          // More info on Chromedriver: https://sites.google.com/a/chromium.org/chromedriver/
+          //
+          // w3c:false tells Chromedriver to run using the legacy JSONWire protocol (not required in Chrome 78)
+          w3c: true,
+          args: [
+            '--profile-directory=Default',
+            '--ignore-certificate-errors',
+            '--allow-insecure-localhost',
+            'window-size=1100,914',
+            // '--headless',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-default-apps'
           ]
         }
       },
+
+      webdriver: {
+        start_process: true,
+        server_path: '',
+        cli_args: [
+          // --verbose
+        ]
+      }
+    },
+
+    edge: {
+      desiredCapabilities : {
+        browserName : 'MicrosoftEdge',
+        'ms:edgeOptions' : {
+          w3c: true,
+          // More info on EdgeDriver: https://docs.microsoft.com/en-us/microsoft-edge/webdriver-chromium/capabilities-edge-options
+          args: [
+            //'--headless'
+          ]
+        }
+      },
+
+      webdriver: {
+        start_process: true,
+        // Download msedgedriver from https://docs.microsoft.com/en-us/microsoft-edge/webdriver-chromium/
+        //  and set the location below:
+        server_path: '',
+        cli_args: [
+          // --verbose
+        ]
+      }
     }
   }
-  function loadServices() {
-    try {
-      Services.seleniumServer = require('selenium-server');
-    } catch (err) {}
-  
-    try {
-      Services.chromedriver = require('chromedriver');
-    } catch (err) {}
-  
-    try {
-      Services.geckodriver = require('geckodriver');
-    } catch (err) {}
-  }
+};
