@@ -29,16 +29,16 @@ module.exports = {
                     - BONUS 2: Use the navbar functions of the website to navigate to the home screen
     */
 
-    beforeEach: function(browser){
-        browser.url(process.env.URL);
-    },
+    // beforeEach: function(browser){
+    //     browser.url(process.env.URL);
+    // },
 
-    afterEach: function(browser){
-        browser.end();
-    },
+    // afterEach: function(browser){
+    //     browser.end();
+    // },
 
     'Exercise 1: Buttons - Checkboxes': (browser) => {
-        // browser.url(process.env.URL);
+        browser.url(process.env.URL);
         browser.waitForElementPresent('body', 3000);
         browser.waitForElementPresent(constants.SELECTORS.LINK, "Buttons");
         browser.click(constants.SELECTORS.LINK, "Buttons");
@@ -54,11 +54,11 @@ module.exports = {
         browser.waitForElementPresent(constants.SELECTORS.XPATH, '//*[text()="Reset"]');
         browser.click(constants.SELECTORS.XPATH, '//*[text()="Reset"]');
         browser.pause(constants.PAUSE.pauseFor3); 
-        // browser.end();
+        browser.end();
     },
 
     'Exercise 1: Buttons - Radio buttons': (browser) => {
-        // browser.url(process.env.URL);
+        browser.url(process.env.URL);
         browser.waitForElementPresent('body', 3000);
         browser.waitForElementPresent(constants.SELECTORS.LINK, "Buttons");
         browser.click(constants.SELECTORS.LINK, "Buttons");
@@ -79,5 +79,6 @@ module.exports = {
         browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="home"]');
         browser.click(constants.SELECTORS.CSS, '[id="home"]');
         browser.assert.urlEquals(process.env.URL); // Bonus 1: verify home page URL
+        browser.end();
     }
 }
