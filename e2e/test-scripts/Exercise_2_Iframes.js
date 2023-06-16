@@ -54,12 +54,12 @@ module.exports = {
         browser.frame('[id="iframe-checkboxes"]');
         // Verify Iframe title and subtitle are correct
         browser.waitForElementPresent(constants.SELECTORS.CSS, '[class="display-4"]');
-        browser.assert.textEquals('[class="display-4"]',"Hello, this is an Iframe!", "Title text is correct!");
+        browser.assert.textEquals('[class="display-4"]', "Hello, this is an Iframe!", "Title text is correct!");
         browser.waitForElementPresent(constants.SELECTORS.CSS, '[class="lead"]');
         browser.assert.textEquals('[class="lead"]', "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.", "Subtitle text is correct!");
         // BONUS: Find the element for iframe content without an attribute to target
-            browser.waitForElementPresent(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)');
-            browser.assert.textEquals('body > div > p:nth-child(4)', "Lorem ipsum dolor sit amet.", "Content text is correct!");
+        browser.waitForElementPresent(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)');
+        browser.assert.textEquals('body > div > p:nth-child(4)', "Lorem ipsum dolor sit amet.", "Content text is correct!");
     },
 
     'Exercise 2: Iframe - css properties': (browser) => {
@@ -90,14 +90,14 @@ module.exports = {
             browser.assert.equal(elWeight, '300', "Subtitle font weight is correct!");
         });
         // BONUS: get font size and weight for iframe content
-            browser.getCssProperty(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)', 'font-size', function (result) {
-                elSize = result.value;
-                browser.assert.equal(elSize, '16px', "Conte font size is correct!");
-            });
-            browser.getCssProperty(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)', 'font-weight', function (result) {
-                elWeight = result.value;
-                browser.assert.equal(elWeight, '400', "Content font weight is correct!");
-            });
+        browser.getCssProperty(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)', 'font-size', function (result) {
+            elSize = result.value;
+            browser.assert.equal(elSize, '16px', "Conte font size is correct!");
+        });
+        browser.getCssProperty(constants.SELECTORS.CSS, 'body > div > p:nth-child(4)', 'font-weight', function (result) {
+            elWeight = result.value;
+            browser.assert.equal(elWeight, '400', "Content font weight is correct!");
+        });
     },
 
     'Exercise 2: Iframe - element interaction': (browser) => {

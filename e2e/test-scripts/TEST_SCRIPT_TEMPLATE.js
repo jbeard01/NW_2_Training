@@ -10,21 +10,21 @@ module.exports = {
     * Here is an example:
     * 
     *   //This will test the repeatSteps command
-    *   'TESTING!!! Repeat Steps command' : (client) => {
+    *   'TESTING!!! Repeat Steps command' : (browser) => {
     *    var n = 1
     *
-    *    client.repeatSteps(3, () => {
+    *    browser.repeatSteps(3, () => {
     *        console.log("Repeat Steps iteration: "  +n);
     *        n++;
     *    })
-    *    client.end();
+    *    browser.end();
     *    },
     * 
     */
 
-   'TESTING!!! <ENTER TEST TARGET HERE>' : (client) => {
+   'TESTING!!! <ENTER TEST TARGET HERE>' : (browser) => {
       //Enter your script here
 
-      client.end();
+      browser.end();
    }
 }

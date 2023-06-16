@@ -2,7 +2,7 @@ const constants = require('../constants'); // reference to hardcoded constants f
 
 module.exports = {
 
-    '@tags': ['null'], // tags to target for run script
+    '@tags': ['test'], // tags to target for run script
 
     /*
     The objective of this module is to learn how to find elements (buttons in this case), and interact with them using various selector strategies.
