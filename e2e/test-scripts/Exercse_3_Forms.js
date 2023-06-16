@@ -9,6 +9,8 @@ module.exports = {
     The objective of this module is to build on what has been learned, as well as working with input elements to complete a registration form
     as well as perform negative tests to verify correct form entry
 
+    Scripting required, fill in the blanks for new commands
+
     Use the following parameters for the test scripts:
         first name = "First_name"
         last name = "Last_name"
@@ -86,8 +88,8 @@ module.exports = {
         // Fill out login form and click submit
         
         // Verify that success message appears
-        browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
-        browser.assert.textEquals('[id="message"]', "test_1@test.com, you have successfully logged in!", "Alert message text is correct!");
+        browser.waitForElementVisible(constants.SELECTORS.CSS, '<insert correct locator here>');
+        browser.assert.textEquals('<insert correct locator here>', "<insert message text to verify here>", "Alert message text is correct!");
         browser.end();
     }
 }
