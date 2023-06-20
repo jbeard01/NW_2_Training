@@ -19,9 +19,4 @@ module.exports = {
         pauseFor2: '2000',
         pauseFor3: '3000'
     },
-    exercise_1: {
-        body: 'body',
-        btnsLink: "Buttons",
-        chkBoxesLink: "Checkboxes",
-    }
 };
