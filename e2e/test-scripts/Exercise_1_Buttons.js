@@ -5,38 +5,28 @@ module.exports = {
     '@tags': ['test'], // tags to target for run script
 
     /*
-    The objective of this module is to learn how to find elements (buttons in this case), and interact with them using various selector strategies.
-    This will show how to use the following selector strategies:
-     - CSS
-     - Link text
-     - Xpath
+    Module 3
+    The objective of this module is to learn about data abstraction and softcoding vs hardcoding. 
+
+    Using the provided example, move hard coded elements to a central file for use elsewhere, in this case the constants.js file in the e2e directory. 
 
         Exercise 1: Buttons
             Script: Checkboxes
-                1) Navigate to the buttons menu and select Checkboxes
-                2) Verify the 3 checkboxes are present
-                    - BONUS: Verify the landing page URL is correct 
-                3) Click the 2nd checkbox
-                4) Reset the selection
+                1) Using data abstraction, move hard coded values in the script to the constants file
             
             Script: Radio buttons
-                1) Navigate to the buttons menu and select Radio buttons
-                2) Verify the 4 radio button options are present
-                    - BONUS: Verify the landing page URL is correct 
-                3) Click the first radio button
-                4) Return to the home screen
-                    - BONUS 1: Verify the home page by URL
-                    - BONUS 2: Use the navbar functions of the website to navigate to the home screen
+                1) 1) Using data abstraction, move hard coded values in the script to the constants file
     */
 
-    // beforeEach: function(browser){
-    //     browser.url(process.env.URL);
-    //     browser.waitForElementPresent('body', 3000);
-    // },
-
-    // afterEach: function(browser){
-    //     browser.end();
-    // },
+    'Exercise 1: Buttons - EXAMPLE Navigate to Checkboxes screen': (browser) => {
+        browser.url(process.env.URL);
+        browser.waitForElementPresent(constants.exercise_1.body, 3000);
+        browser.waitForElementPresent(constants.SELECTORS.LINK, constants.exercise_1.btnsLink);
+        browser.click(constants.SELECTORS.LINK, constants.exercise_1.btnsLink);
+        browser.waitForElementPresent(constants.SELECTORS.LINK, constants.exercise_1.chkBoxesLink);
+        browser.click(constants.SELECTORS.LINK, constants.exercise_1.chkBoxesLink);
+        browser.end();
+    },
 
     'Exercise 1: Buttons - Checkboxes': (browser) => {
         browser.url(process.env.URL);
@@ -73,10 +63,10 @@ module.exports = {
         browser.waitForElementPresent(constants.SELECTORS.CSS, '[for="radio-button4"]');
         browser.click(constants.SELECTORS.CSS, '[for="radio-button1"]');
         browser.pause(constants.PAUSE.pauseFor3); 
-        // browser.url(process.env.URL); // returns to home page
-        // browser.assert.urlEquals(process.env.URL); // Bonus 1: verify home page URL
+        browser.url(process.env.URL); // returns to home page
+        browser.assert.urlEquals(process.env.URL); // verify home page URL
 
-        // Bonus 2: use navbar to return home, verify URL (BONUS 1)
+        // Use navbar to return home, verify URL
         browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="home"]');
         browser.click(constants.SELECTORS.CSS, '[id="home"]');
         browser.assert.urlEquals(process.env.URL); // Bonus 1: verify home page URL

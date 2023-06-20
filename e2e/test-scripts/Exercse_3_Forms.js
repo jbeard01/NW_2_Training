@@ -2,7 +2,7 @@ const constants = require('../constants'); // reference to hardcoded constants f
 
 module.exports = {
 
-    '@tags': ['test'], // tags to target for run script
+    '@tags': ['null'], // tags to target for run script
 
     /*
     The objective of this module is to build on what has been learned, as well as working with input elements to complete a registration form
