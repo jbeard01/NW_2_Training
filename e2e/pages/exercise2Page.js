@@ -23,7 +23,7 @@ module.exports = {
                 this.waitForElementPresent(constants.SELECTORS.LINK, "Iframes");
                 this.api.pause(constants.PAUSE.pauseFor1);
                 this.click(constants.SELECTORS.LINK, "Iframes");
-                this.assert.urlContains('iframe');
+                this.verify.urlContains('iframe');
                 // Switch to iframe
                 this.api.frame('[id="iframe-checkboxes"]');
             }
