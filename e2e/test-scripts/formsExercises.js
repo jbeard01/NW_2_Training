@@ -48,7 +48,6 @@ module.exports = {
 
     'Exercise 3: Forms - EXAMPLE input text in an input field with PO function': (browser) => {
         const ex3 = browser.page.exercise3Page();
-        ex3.navToSite();
         ex3.navToLogin();
         browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
         browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
@@ -58,7 +57,6 @@ module.exports = {
     'Exercise 3: Forms - Negative test - Login without registration with PO function': (browser) => {
         const ex3 = browser.page.exercise3Page();
 
-        ex3.navToSite();
         ex3.navToLogin();
 
         // browser.url(process.env.URL);
@@ -87,7 +85,6 @@ module.exports = {
     'Exercise 3: Forms - Complete registration form with PO function': (browser) => {
         const ex3 = browser.page.exercise3Page();
 
-        ex3.navToSite();
 
         // browser.url(process.env.URL);
         // browser.waitForElementPresent('body', 3000);
@@ -131,7 +128,6 @@ module.exports = {
     'Exercise 3: Forms - Login with registration credentials with PO function': (browser) => {
         const ex3 = browser.page.exercise3Page();
 
-        ex3.navToSite();
         ex3.navToLogin();
 
         // browser.url(process.env.URL);

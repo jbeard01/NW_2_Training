@@ -7,15 +7,6 @@ module.exports = {
     },
 
     commands: [
-        { 
-            // EXAMPLE page object function: Navigates to site under test and verifies the body of the html has loaded
-            navToSite: function (){
-                const self = this;
-                this.api.url(process.env.URL);
-                this.waitForElementPresent('body', 3000);
-            }
-        },
-
         {
             // This function will navigate to the login page of forms menu
             navToLogin: function (){
