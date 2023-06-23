@@ -55,88 +55,27 @@ module.exports = {
 
     'Exercise 2: Iframe - verify text with PO function': (browser) => {
         const ex2 = browser.page.exercise2Page();
-
         ex2.navToSite();
         ex2.focusIfarme();
-
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Iframes");
-        // browser.click(constants.SELECTORS.LINK, "Iframes");
-        // browser.assert.urlContains('iframe');
-        // // Switch to iframe
-        // browser.frame('[id="iframe-checkboxes"]');
-
-        // Verify Iframe title and subtitle are correct
-
         ex2.verifyElText();
-
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[class="display-4"]');
-        // browser.assert.textEquals('[class="display-4"]', "Hello, this is an Iframe!", "Title text is correct!");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[class="lead"]');
-        // browser.assert.textEquals('[class="lead"]', "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.", "Subtitle text is correct!");
     },
 
     'Exercise 2: Iframe - css properties with PO function': (browser) => {
         const ex2 = browser.page.exercise2Page();
-
         ex2.navToSite();
         ex2.focusIfarme();
 
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Iframes");
-        // browser.click(constants.SELECTORS.LINK, "Iframes");
-        // browser.assert.urlContains('iframe');
-        // // Switch to iframe
-        // browser.frame('[id="iframe-checkboxes"]');
-
-        // // Verify title font size and weight
+        // Verify title font size and weight
         ex2.verifyElFont();
-
-        // browser.getCssProperty(constants.SELECTORS.CSS, '[class="display-4"]', 'font-size', function (result) {
-        //     elSize = result.value;
-        //     browser.assert.equal(elSize, '56px', "Title font size is correct!");
-        // });
-        // browser.getCssProperty(constants.SELECTORS.CSS, '[class="display-4"]', 'font-weight', function (result) {
-        //     elWeight = result.value;
-        //     browser.assert.equal(elWeight, '300', "Title font weight is correct!");
-        // });
-        // // Verify subtitle font size and weight
-        // browser.getCssProperty(constants.SELECTORS.CSS, '[class="lead"]', 'font-size', function (result) {
-        //     elSize = result.value;
-        //     browser.assert.equal(elSize, '20px', "Subtitle font size is correct!");
-        // });
-        // browser.getCssProperty(constants.SELECTORS.CSS, '[class="lead"]', 'font-weight', function (result) {
-        //     elWeight = result.value;
-        //     browser.assert.equal(elWeight, '300', "Subtitle font weight is correct!");
-        // });
     },
 
     'Exercise 2: Iframe - element interaction with PO function': (browser) => {
         const ex2 = browser.page.exercise2Page();
-        
         ex2.navToSite();
         ex2.focusIfarme();
 
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Iframes");
-        // browser.click(constants.SELECTORS.LINK, "Iframes");
-        // browser.assert.urlContains('iframe');
-        // // Switch to iframe
-        // browser.frame('[id="iframe-checkboxes"]');
-
         // Verify that Learn more text is not visible
         ex2.verifyBtnBehavior();
-
-        // browser.assert.not.visible('[id="show-text"]');
-        // // Click Learn more button
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="learn-more"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="learn-more"]');
-        // // Verify text is visible and correct
-        // browser.assert.visible('[id="show-text"]');
-        // browser.assert.textEquals('[id="show-text"]', "This text appears when you click the \"Learn more\" button", "Text is visible and correct!");
     },
 
 }

@@ -61,23 +61,8 @@ module.exports = {
         ex3.navToSite();
         ex3.navToLogin();
 
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Login");
-        // browser.click(constants.SELECTORS.LINK, "Login");
-        // browser.assert.urlContains('login');
-
         // Attempt login without registration
         ex3.login();
-
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
 
         // Verify correct error message
         browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
@@ -89,39 +74,10 @@ module.exports = {
 
         ex3.navToSite();
 
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-
         ex3.navToReg();
-
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Register");
-        // browser.click(constants.SELECTORS.LINK, "Register");
-        // browser.assert.urlContains('register');
-
 
         // Fill out the form
         ex3.registerForm();
-
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="firstName"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="firstName"]', "First_name");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="lastName"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="lastName"]', "Last_name");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="phone"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="phone"]', "5555555555");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[value="United States of America"]');
-        // browser.click(constants.SELECTORS.CSS, '[value="United States of America"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="emailAddress"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="emailAddress"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="registerBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="registerBtn"]');
         
         // Verify that error message appears and is correct
         browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
@@ -134,23 +90,8 @@ module.exports = {
         ex3.navToSite();
         ex3.navToLogin();
 
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Login");
-        // browser.click(constants.SELECTORS.LINK, "Login");
-        // browser.assert.urlContains('login');
-
         // Fill out the login form after registration
         ex3.login();
-        
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
         
         // Verify correct error message
         browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');

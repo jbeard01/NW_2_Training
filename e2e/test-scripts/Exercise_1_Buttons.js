@@ -46,18 +46,7 @@ module.exports = {
         const ex1 = browser.page.exercise1Page();
         browser.url(process.env.URL);
         browser.waitForElementPresent('body', 3000);
-        // Use the correct page object function to verify checkboxes are present
         ex1.verifyChkBoxes();
-
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Buttons");
-        // browser.click(constants.SELECTORS.LINK, "Buttons");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Checkboxes");
-        // browser.click(constants.SELECTORS.LINK, "Checkboxes");
-        // browser.assert.urlContains('checkboxes');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="checkbox1"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="checkbox2"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="checkbox3"]');
-
         browser.click(constants.SELECTORS.CSS, '[id="checkbox2"]');
         browser.pause(constants.PAUSE.pauseFor3); 
         browser.waitForElementPresent(constants.SELECTORS.XPATH, '//*[text()="Reset"]');
@@ -73,26 +62,10 @@ module.exports = {
 
         ex1.verifyRadioBtns();
 
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Buttons");
-        // browser.click(constants.SELECTORS.LINK, "Buttons");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Radio buttons");
-        // browser.click(constants.SELECTORS.LINK, "Radio buttons");
-        // browser.assert.urlContains('radiobuttons');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[for="radio-button1"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[for="radio-button2"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[for="radio-button3"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[for="radio-button4"]');
-
         browser.click(constants.SELECTORS.CSS, '[for="radio-button1"]');
         browser.pause(constants.PAUSE.pauseFor3); 
-        browser.url(process.env.URL); // returns to home page
 
-        // BONUS: Create a page object function to use then navbar to return home, verify URL
         ex1.navToHome();
-
-        // browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="home"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="home"]');
-        // browser.assert.urlEquals(process.env.URL); // verify home page URL
 
         browser.end();
     }
