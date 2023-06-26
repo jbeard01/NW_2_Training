@@ -5,52 +5,37 @@ module.exports = {
     '@tags': ['null'], // tags to target for run script
 
     /*
-    Module 3
-    The objective of this module is to learn about and understand the POM or Page Object Model, hard vs soft assertions, and how to call a page object function inside a test script. 
-    In this exercise, code will be moved to a page object file, and a page object function created to be used in it's place. 
-    This will highlight how the POM works, and assert vs verify.
-
-    Using the provided examples, create a Page Object Function that will complete the test. 
-        *** NOTE: Page Object Functions (PO Function) should not contain hard assertions! ***
-
-        Exercise 2: Iframes 
-
-            Script: Iframe - verify text page object function
-                1) Using provided page object function, navigate to the Iframes page
-                2) Using provided page object function, switch focus to the iframe
-                3) Create a page object function (verifyElText) that does the following:
-                    1) Verify the Title text
-                    2) Verify the Subtitle text
-
-            NOTE: This rem to px conversion can be used to verify return value of css properties
-            (https://codebeautify.org/rem-to-px-converter)
-
-            Script: Iframe - css properties page object function
-                Script: Iframe - verify text page object function
-                1) Using provided page object function, navigate to the Iframes page
-                2) Using provided page object function, switch focus to the iframe
-                3) Create a page object function (verifyElFont) that does the following:
-                    - Verify the Title css properties
-                        1) font size
-                        2) font weight
-                    - Verify the Subtitle css properties
-                        1) font size
-                        2) font weight
-
-            Script: Iframe - element interaction page object function
-                1) Using provided page object function, navigate to the Iframes page
-                2) Using provided page object function, switch focus to the iframe
-                3) Create a page object function (verifyBtnBehavior) that does the following:
-                    1) Verify the learn more text is not visible
-                    2) Click the "Learn more" button
-                    3) Verify the text becomes visible 
-                    4) Verify the text is correct
+    Module 3 (part 1)
+    The objective of this module is to learn about hardcoding, abstraction, and extended Page Object Model methods.
+    Using the provided constants file, abstract hardcoded data from the tests into the constants file. 
+        
+    Exercise 2 Iframes: 
+        1) Rename the test suite file to better represent the testing being conducted (iframeTests.js)
+        2) Rename the page object page for exercise 2 to better represent the functions used for testing (iframePage.js)
+            *** Note: you must also update the function calls to match the new naming for the page object page
+            1) Using data abstraction, abstract hardcoded data points into the constants file
+            2) Update the existing page object functions to accept variables from the constants file
+    
+    Module 3 (part 2) 
+        1) Using data abstraction, move page specific elements to the elements object of the iframePage.js
+        2) Identify repeated code in the verification page object functions
+            1) split the verifyFont page object function into 2 specific functions that run based on the variables passed into them
+             ***The new page object functions should accept 2 arguments 1) the element locator and 2) the size OR weight of the font of that element
+                a) verifyElFontSize
+                b) verifyElFontWeight
+            2) Update the existing page object functions to accept variable arguments 
+            3) Update the page object functions inside the test scripts for iframeTests.js to use correct variables for the script being tested
+            4) Add a beforeEach and an after hook to the test suite
+                1) beforeEach hook should navigate to the site under test, navigate to the iframe menu and switch focus to the iframe element
+                2) after hook should close the browser session        
     */
 
-    'Exercise 2: Iframe - EXAMPLE switch to iframe with PO function': (browser) => {
-        const ex2 = browser.page.exercise2Page();
-        ex2.navToSite();
-        ex2.focusIfarme();
+    beforeEach: function(browser){
+        const nav = browser.page.navPage();
+        const iframe = browser.page.iframePage();
+    },
+    after: function(browser){
+       
     },
 
     'Exercise 2: Iframe - verify text with PO function': (browser) => {

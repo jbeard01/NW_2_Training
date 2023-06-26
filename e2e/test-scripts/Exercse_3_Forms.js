@@ -5,26 +5,31 @@ module.exports = {
     '@tags': ['null'], // tags to target for run script
 
     /*
-    Module 3
+    Module 3 (part 1)
     The objective of this module is to learn about hardcoding, abstraction, and extended Page Object Model methods.
     Using the provided constants file, abstract hardcoded data from the tests into the constants file. 
         
     Exercise 3 Forms: 
-        1) Rename the test suite file to better represent the testing being conducted
-        2) Rename the page object page for exercise 1 to better represent the functions used for testing
+        1) Rename the test suite file to better represent the testing being conducted (formTests.js)
+        2) Rename the page object page for exercise 3 to better represent the functions used for testing (formPage.js)
             *** Note: you must also update the function calls to match the new naming for the page object page
-        3) Abstract hardcoded data points into the constants file
+        3) Using data abstraction, abstract hardcoded data points into the constants file in the FORMS object
 
-    
+    Module 3 (part 2) 
+        1) Using data abstraction, move page specific elements to the elements object of the iframePage.js
+        2) Update the existing page object functions to accept variable arguments 
+        3) Update the page object functions inside the test scripts for iframeTests.js to use correct variables for the script being tested
+        4) Add beforeEach and an after hook to the test script 
+            1) beforeEach should navigate to the site under test
+            2) the after hook should close the broser session
     */
 
-    'Exercise 3: Forms - EXAMPLE input text in an input field with PO function': (browser) => {
-        const ex3 = browser.page.exercise3Page();
-        ex3.navToSite();
-        ex3.navToLogin();
-        browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        browser.pause(constants.PAUSE.pauseFor3);
+    beforeEach: function(browser){
+        const nav = browser.page.navPage();
+        
+    },
+    after: function(browser){
+        
     },
 
     'Exercise 3: Forms - Negative test - Login without registration with PO function': (browser) => {
