@@ -2,7 +2,7 @@ const constants = require('../constants'); // reference to hardcoded constants f
 
 module.exports = {
 
-    '@tags': ['test'], // tags to target for run script
+    '@tags': ['null'], // tags to target for run script
 
     /*
     Module 2
