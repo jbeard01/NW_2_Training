@@ -14,6 +14,7 @@ module.exports = {
         2) Rename the page object page for exercise 1 to better represent the functions used for testing (buttonPage.js)
             *** Note: you must also update the function calls to match the new naming for the page object page
         3) Using data abstraction, abstract hardcoded data points into the constants file for use in the tests
+            
             Example: line 32  browser.click(constants.SELECTORS.CSS, '[id="checkbox2"]');
                      line 32  browser.click(constants.SELECTORS.CSS, constants.BUTTONS.chkBox2);
 
@@ -24,12 +25,15 @@ module.exports = {
             1) Move these functions to the navPage.js file
             2) Create a function to navigate to a menu item, and if applicable it's sub-menu items, by data passed into the function
                 a) navToMenuItem
+                b) use a conditional statement to determin if a menu is a single item or contains a sub-menu
+                    1) if there is no sub-menu, the function should use null as the argument to be passed into the function
+                Example: if(selector1 != null){ <commands to run if there is a sub-menu to navigate to> };
             3) Remove redundant navigation functions
             4) Update navigation functions in buttonTests.js
         3) Add beforeEach and afterEach hooks to the test suite (these go above the test scripts)
-            1) beforeEach
-                a) navToSite
-            2) afterEach
+            1) beforeEach should navigate to the site under test
+                a) navToSite();  
+            2) afterEach should close the browser session
                 a) browser.end();
 
         Example:
