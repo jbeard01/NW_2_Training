@@ -47,40 +47,36 @@ module.exports = {
                     4) Verify the text is correct
     */
 
-    before: function(browser){
+    beforeEach: function(){
         const nav = browser.page.navPage();
+        const iframe = browser.page.iframePage();
         nav.navToSite();
+        nav.navToMenuItem(constants.IFRAMES.iframeMenu, null, constants.IFRAMES.iframeUrlVerify);
+        iframe.focusIfarme();
     },
     after: function(browser){
         browser.end();
     },
 
-    'Exercise 2: Iframe - EXAMPLE switch to iframe with PO function': (browser) => {
-        const ex2 = browser.page.exercise2Page();
-        ex2.focusIfarme();
-    },
-
     'Exercise 2: Iframe - verify text with PO function': (browser) => {
-        const ex2 = browser.page.exercise2Page();
-        ex2.focusIfarme();
-
+        const iframe = browser.page.iframePage();
         // Verify Iframe title and subtitle are correct
-        ex2.verifyElText();
+        iframe.verifyElText(constants.IFRAMES.titleLoc, constants.IFRAMES.titleText);
+        iframe.verifyElText(constants.IFRAMES.subTitleLoc, constants.IFRAMES.subTitleText);
     },
 
     'Exercise 2: Iframe - css properties with PO function': (browser) => {
-        const ex2 = browser.page.exercise2Page();
-        ex2.focusIfarme();
-
-        // Verify title font size and weight
-        ex2.verifyElFont();
+        const iframe = browser.page.iframePage();
+        // Verify Iframe title and subtitle font size and weight
+        iframe.verifyElFontSize(constants.IFRAMES.titleLoc, constants.IFRAMES.titleFontSize);
+        iframe.verifyElFontSize(constants.IFRAMES.subTitleLoc, constants.IFRAMES.subTitleFontSize);
+        iframe.verifyElFontWeight(constants.IFRAMES.titleLoc, constants.IFRAMES.titleFontWeight);
+        iframe.verifyElFontWeight(constants.IFRAMES.subTitleLoc, constants.IFRAMES.subTitleFontWeight);
     },
 
     'Exercise 2: Iframe - element interaction with PO function': (browser) => {
-        const ex2 = browser.page.exercise2Page();
-        ex2.focusIfarme();
-
+        const iframe = browser.page.iframePage();
         // Verify that Learn more text is not visible until button is clicked
-        ex2.verifyBtnBehavior();
+        iframe.verifyBtnBehavior(constants.IFRAMES.learnMoreBtnText, constants.IFRAMES.learnMoreBtnLoc, constants.IFRAMES.learnMoreText);
     }
 }

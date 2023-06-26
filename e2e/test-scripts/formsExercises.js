@@ -2,7 +2,7 @@ const constants = require('../constants'); // reference to hardcoded constants f
 
 module.exports = {
 
-    '@tags': ['null'], // tags to target for run script
+    '@tags': ['test'], // tags to target for run script
 
     /*
     Module 2
@@ -46,111 +46,44 @@ module.exports = {
                 4) Verify success message
     */
 
-    'Exercise 3: Forms - EXAMPLE input text in an input field with PO function': (browser) => {
-        const ex3 = browser.page.exercise3Page();
-        ex3.navToLogin();
-        browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        browser.pause(constants.PAUSE.pauseFor3);
+    beforeEach: function(browser){
+        const nav = browser.page.navPage();
+        nav.navToSite();
+    },
+    after: function(browser){
+        browser.end();
     },
 
     'Exercise 3: Forms - Negative test - Login without registration with PO function': (browser) => {
-        const ex3 = browser.page.exercise3Page();
-
-        ex3.navToLogin();
-
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Login");
-        // browser.click(constants.SELECTORS.LINK, "Login");
-        // browser.assert.urlContains('login');
-
+        const form = browser.page.formPage();
+        const nav = browser.page.navPage();
+        nav.navToMenuItem(constants.FORMS.formsMenu, constants.FORMS.loginLink, constants.FORMS.loginUrlVerify);
         // Attempt login without registration
-        ex3.login();
-
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-
+        form.login(constants.FORMS.account.email, constants.FORMS.account.password);
         // Verify correct error message
-        browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
-        browser.assert.textEquals('[id="message"]', "Bad credentials! Please try again! Make sure that you've registered.", "Alert message text is correct!");
+        browser.waitForElementVisible(constants.SELECTORS.CSS, constants.FORMS.alertMsgLoc);
+        browser.assert.textEquals(constants.FORMS.alertMsgLoc, constants.FORMS.badCredMsg, "Alert message text is correct!");
     },
 
     'Exercise 3: Forms - Complete registration form with PO function': (browser) => {
-        const ex3 = browser.page.exercise3Page();
-
-
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-
-        ex3.navToReg();
-
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Register");
-        // browser.click(constants.SELECTORS.LINK, "Register");
-        // browser.assert.urlContains('register');
-
-
+        const form = browser.page.formPage();
+        const nav = browser.page.navPage();
+        nav.navToMenuItem(constants.FORMS.formsMenu, constants.FORMS.registerLink, constants.FORMS.registerUrlVerify);
         // Fill out the form
-        ex3.registerForm();
-
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="firstName"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="firstName"]', "First_name");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="lastName"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="lastName"]', "Last_name");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="phone"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="phone"]', "5555555555");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[value="United States of America"]');
-        // browser.click(constants.SELECTORS.CSS, '[value="United States of America"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="emailAddress"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="emailAddress"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="registerBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="registerBtn"]');
-        
+        form.registerForm(constants.FORMS.account); 
         // Verify that error message appears and is correct
-        browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
-        browser.assert.textEquals('[id="message"]', "The account has been successfully created!", "Alert message text is correct!");
+        browser.waitForElementVisible(constants.SELECTORS.CSS, constants.FORMS.alertMsgLoc);
+        browser.assert.textEquals(constants.FORMS.alertMsgLoc, constants.FORMS.createActSucessMsg, "Alert message text is correct!");
     },
 
     'Exercise 3: Forms - Login with registration credentials with PO function': (browser) => {
-        const ex3 = browser.page.exercise3Page();
-
-        ex3.navToLogin();
-
-        // browser.url(process.env.URL);
-        // browser.waitForElementPresent('body', 3000);
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-        // browser.click(constants.SELECTORS.LINK, "Forms");
-        // browser.waitForElementPresent(constants.SELECTORS.LINK, "Login");
-        // browser.click(constants.SELECTORS.LINK, "Login");
-        // browser.assert.urlContains('login');
-
+        const form = browser.page.formPage();
+        const nav = browser.page.navPage();
+        nav.navToMenuItem(constants.FORMS.formsMenu, constants.FORMS.loginLink, constants.FORMS.loginUrlVerify);
         // Fill out the login form after registration
-        ex3.login();
-        
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-        // browser.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-        // browser.waitForElementPresent(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-        // browser.click(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-        
+        form.login(constants.FORMS.account.email, constants.FORMS.account.password);
         // Verify correct error message
-        browser.waitForElementVisible(constants.SELECTORS.CSS, '[id="message"]');
-        browser.assert.textEquals('[id="message"]', "test_1@test.com, you have successfully logged in!", "Alert message text is correct!");
-        browser.end();
+        browser.waitForElementVisible(constants.SELECTORS.CSS, constants.FORMS.alertMsgLoc);
+        browser.assert.textEquals(constants.FORMS.alertMsgLoc, constants.FORMS.loginSuccessMsg, "Alert message text is correct!");
     }
 }

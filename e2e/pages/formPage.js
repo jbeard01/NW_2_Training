@@ -2,70 +2,60 @@ const constants = require('../constants');
 
 module.exports = {
     elements: {
-        
-
+        // shared elements
+        password: '[id="password"]',
+        // login page elements
+        loginEmail: '[id="email"]',
+        submitBtn: '[id="submitLoginBtn"]',
+        // registration form elements
+        firstName: '[id="firstName"]',
+        lastName: '[id="lastName"]',
+        phone: '[id="phone"]',
+        countryPicker: '[id="countries_dropdown_menu"]',
+        email: '[id="emailAddress"]',
+        chkboxToC: '[id="exampleCheck1"]',
+        registerBtn:'[id="registerBtn"]'
     },
 
     commands: [
         {
-            // This function will navigate to the login page of forms menu
-            navToLogin: function (){
-                const self = this;
-                this.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-                this.click(constants.SELECTORS.LINK, "Forms");
-                this.waitForElementPresent(constants.SELECTORS.LINK, "Login");
-                this.click(constants.SELECTORS.LINK, "Login");
-                this.verify.urlContains('login');
-            }
-        },
-
-        {
-            // This function will navigate to the register page of forms menu
-            navToReg: function (){
-                const self = this;
-                this.waitForElementPresent(constants.SELECTORS.LINK, "Forms");
-                this.click(constants.SELECTORS.LINK, "Forms");
-                this.waitForElementPresent(constants.SELECTORS.LINK, "Register");
-                this.click(constants.SELECTORS.LINK, "Register");
-                this.verify.urlContains('register');
-            }
-        },
-
-        {
             // This function will attempt to login to the website
-            login: function (){
+            // This function expects 2 arguments passed in 1) email, 2) password
+            login: function (selector0, selector1){
                 const self = this;
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="email"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="email"]', "test_1@test.com");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
-                this.click(constants.SELECTORS.CSS, '[id="submitLoginBtn"]');
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.loginEmail.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.loginEmail.selector, selector0);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.password.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.password.selector, selector1);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.submitBtn.selector);
+                this.click(constants.SELECTORS.CSS, self.elements.submitBtn.selector);
             }
         },
 
         {
             // This function will fill out the registration form
-            registerForm: function (){
+            // This function expects a single argument (must be an object) 1) account object. This function will then parse the account object variables
+            // To use correctly all objects passed in to this function must have the same variable names
+            registerForm: function (selector){
                 const self = this;
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="firstName"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="firstName"]', "First_name");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="lastName"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="lastName"]', "Last_name");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="phone"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="phone"]', "5555555555");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-                this.click(constants.SELECTORS.CSS, '[id="countries_dropdown_menu"]');
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[value="United States of America"]');
-                this.click(constants.SELECTORS.CSS, '[value="United States of America"]');
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="emailAddress"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="emailAddress"]', "test_1@test.com");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="password"]');
-                this.setValue(constants.SELECTORS.CSS, '[id="password"]', "auto_test_1");
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-                this.click(constants.SELECTORS.CSS, '[id="exampleCheck1"]');
-                this.waitForElementPresent(constants.SELECTORS.CSS, '[id="registerBtn"]');
-                this.click(constants.SELECTORS.CSS, '[id="registerBtn"]');
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.firstName.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.firstName.selector, selector.firstName);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.lastName.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.lastName.selector, selector.lastName);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.phone.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.phone.selector, selector.phone);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.countryPicker.selector);
+                this.click(constants.SELECTORS.CSS, self.elements.countryPicker.selector);
+                this.waitForElementPresent(constants.SELECTORS.CSS, selector.country);
+                this.click(constants.SELECTORS.CSS, selector.country);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.email.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.email.selector, selector.email);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.password.selector);
+                this.setValue(constants.SELECTORS.CSS, self.elements.password.selector, selector.password);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.chkboxToC.selector);
+                this.click(constants.SELECTORS.CSS, self.elements.chkboxToC.selector);
+                this.waitForElementPresent(constants.SELECTORS.CSS, self.elements.registerBtn.selector);
+                this.click(constants.SELECTORS.CSS, self.elements.registerBtn.selector);
             }
         }
     ]

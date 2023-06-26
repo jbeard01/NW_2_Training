@@ -20,15 +20,18 @@ module.exports = {
         pauseFor3: '3000'
     },
     BUTTONS: {
+        buttonMenu: "Buttons",
         chkboxLink: "Checkboxes",
         chkBoxUrlVerify: 'checkboxes',
-        radioBtnLink: "",
-        radioBtnUrlVerify: '',
+        radioBtnLink: "Radio buttons",
+        radioBtnUrlVerify: 'radiobuttons',
         chkBox2: '[id="checkbox2"]',
         resetBtnXpath: '//*[text()="Reset"]',
         radioBtn1: '[for="radio-button1"]'
     },
     IFRAMES: {
+        iframeMenu: "Iframes",
+        iframeUrlVerify: 'iframe',
         titleLoc: '[class="display-4"]',
         titleText: "Hello, this is an Iframe!",
         titleFontSize: '56px',
@@ -37,10 +40,27 @@ module.exports = {
         subTitleText: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
         subTitleFontSize: '20px',
         subTitleFontWeight: '300',
-        learnMoreBtnLoc: '[id="show-text"]',
+        learnMoreBtnLoc: '[id="learn-more"]',
+        learnMoreBtnText: '[id="show-text"]',
         learnMoreText: "This text appears when you click the \"Learn more\" button",
     },
     FORMS: {
-
+        formsMenu: "Forms",
+        loginLink: "Login",
+        registerLink: "Register",
+        loginUrlVerify: 'login',
+        registerUrlVerify: 'register',
+        alertMsgLoc: '[id="message"]',
+        badCredMsg: "Bad credentials! Please try again! Make sure that you've registered.",
+        createActSucessMsg: "The account has been successfully created!",
+        loginSuccessMsg: "test_1@test.com, you have successfully logged in!",
+        account: {
+            firstName: "First_name",
+            lastName: "Last_name",
+            phone: "5555555555",
+            country: '[value="United States of America"]',
+            email: "test_1@test.com",
+            password: "auto_test_1"
+        }
     }
 };
