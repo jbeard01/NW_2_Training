@@ -5,35 +5,18 @@ module.exports = {
     '@tags': ['null'], // tags to target for run script
 
     /*
-    Module 2
-    The objective of this module is to learn about and understand the POM or Page Object Model, hard vs soft assertions, and how to call a page object function inside a test script. 
-    In this exercise, code will be moved to a page object file, and a page object function created to be used in it's place. 
-    This will highlight how the POM works, and assert vs verify.
-
-    Using the provided example, create a Page Object Function that will complete the test. 
-        *** NOTE: Page Object Functions (PO Function) should not contain hard assertions! ***
-
-        Exercise 1: Buttons (modify existing long form scripts)
-
-            Script: Checkboxes page object function
-                Create a page object function (verifyChkBoxes) that does the following:
-                    1) Navigate to the buttons menu and select Checkboxes
-                    2) Verify the landing page URL is correct
-                    3) Verify the 3 checkboxes are present
-
-                1) Click the 2nd checkbox
-                2) Reset the selection
+    Module 3
+    The objective of this module is to learn about hardcoding, abstraction, and extended Page Object Model methods.
+    Using the provided constants file, abstract hardcoded data from the tests into the constants file. 
+        
+    Exercise 1 Buttons: 
+        1) Rename the test suite file to better represent the testing being conducted
+        2) Rename the page object page for exercise 1 to better represent the functions used for testing
+            *** Note: you must also update the function calls to match the new naming for the page object page
+        3) Abstract hardcoded data points into the constants file
             
-            Script: Radio buttons page object function
-                Create a page object function (verifyRadioBtns) that does the following:
-                    1) Navigate to the buttons menu and select Radio buttons
-                    2) Verify the 4 radio button options are present
-                    3)Verify the landing page URL is correct 
-                1) Click the first radio button
-                2) Return to the home screen
-                    - BONUS: Create a page object function (navToHome) to use then navbar to return home, verify URL
-                    1) Use the navbar functions of the website to navigate to the home screen
-                    2) Verify the home page by URL
+        Example: line 32  browser.click(constants.SELECTORS.CSS, '[id="checkbox2"]');
+                 line 32  browser.click(constants.SELECTORS.CSS, constants.BUTTONS.chkBox2);
     */
 
     'Exercise 1: Buttons - EXAMPLE Navigate to URL under test by PO function': (browser) => {

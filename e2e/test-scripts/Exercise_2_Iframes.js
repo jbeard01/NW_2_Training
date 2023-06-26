@@ -5,7 +5,7 @@ module.exports = {
     '@tags': ['null'], // tags to target for run script
 
     /*
-    Module 2
+    Module 3
     The objective of this module is to learn about and understand the POM or Page Object Model, hard vs soft assertions, and how to call a page object function inside a test script. 
     In this exercise, code will be moved to a page object file, and a page object function created to be used in it's place. 
     This will highlight how the POM works, and assert vs verify.
