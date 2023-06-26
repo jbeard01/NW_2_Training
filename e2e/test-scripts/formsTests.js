@@ -5,45 +5,23 @@ module.exports = {
     '@tags': ['null'], // tags to target for run script
 
     /*
-    Module 2
-    The objective of this module is to learn about and understand the POM or Page Object Model, hard vs soft assertions, and how to call a page object function inside a test script. 
-    In this exercise, code will be moved to a page object file, and a page object function created to be used in it's place. 
-    This will highlight how the POM works, and assert vs verify.
+    Module 3 (part 1)
+    The objective of this module is to learn about hardcoding, abstraction, and extended Page Object Model methods.
+    Using the provided constants file, abstract hardcoded data from the tests into the constants file. 
+        
+    Exercise 3 Forms: 
+        1) Rename the test suite file to better represent the testing being conducted (formTests.js)
+        2) Rename the page object page for exercise 3 to better represent the functions used for testing (formPage.js)
+            *** Note: you must also update the function calls to match the new naming for the page object page
+        3) Using data abstraction, abstract hardcoded data points into the constants file in the FORMS object
 
-    Using the provided examples, create a Page Object Function that will complete the test. 
-        *** NOTE: Page Object Functions (PO Function) should not contain hard assertions! ***
-
-    Use the following parameters for the test scripts:
-        first name = "First_name"
-        last name = "Last_name"
-        phone = "5555555555"
-        email = "test_1@test.com"
-        password = "auto_test_1"
-
-        Exercise 3: Forms
-            Script: Negative test - Login without registration
-                1) Using provided page object function, navigate to the test site URL
-                2) Using provided page object function, navigate to the forms menu and select Login
-                3) Create a page object function to do the following:
-                    1)Fill out form
-                    2) Click submit
-                4) Verify error message
-
-            Script: Complete registration form
-                1) Using provided page object function, navigate to the test site URL
-                2) Create a page object function to do the following:
-                    1) navigate to the forms menu registration page
-                3) Create a page object function to do the following
-                    1) Fill out form fields
-                    2) Check ToC checkbox
-                    3) Click Register button
-                4) Verify success message 
-
-            Script: Login with registration credentials
-                1) Using provided page object function, navigate to the forms menu and select Login
-                2) Using provided page object function, navigate to the forms menu and select Login
-                3) Reuse the login page object function to login with registration credentials
-                4) Verify success message
+    Module 3 (part 2) 
+        1) Using data abstraction, move page specific elements to the elements object of the iframePage.js
+        2) Update the existing page object functions to accept variable arguments 
+        3) Update the page object functions inside the test scripts for iframeTests.js to use correct variables for the script being tested
+        4) Add beforeEach and an after hook to the test script 
+            1) beforeEach should navigate to the site under test
+            2) the after hook should close the broser session
     */
 
     beforeEach: function(browser){
