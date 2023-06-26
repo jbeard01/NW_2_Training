@@ -39,7 +39,6 @@ module.exports = {
     beforeEach: function(browser){
         const nav = browser.page.navPage();
         nav.navToSite();
-        nav.navToMenuItem(constants.BUTTONS.buttonMenu ,constants.BUTTONS.chkboxLink, constants.BUTTONS.chkBoxUrlVerify);
     },
     afterEach: function(browser){
         browser.end();
@@ -47,6 +46,8 @@ module.exports = {
 
     'Exercise 1: Buttons - Checkboxes with PO function': (browser) => {
         const button = browser.page.buttonPage();
+        const nav = browser.page.navPage();
+        nav.navToMenuItem(constants.BUTTONS.buttonMenu ,constants.BUTTONS.chkboxLink, constants.BUTTONS.chkBoxUrlVerify);
         // verify checkbox elments are present and select checkbox 2
         button.verifyChkBoxes();
         browser.click(constants.SELECTORS.CSS, constants.BUTTONS.chkBox2);
@@ -59,6 +60,7 @@ module.exports = {
     'Exercise 1: Buttons - Radio buttons with PO function': (browser) => {
         const button = browser.page.buttonPage();
         const nav = browser.page.navPage();
+        nav.navToMenuItem(constants.BUTTONS.buttonMenu ,constants.BUTTONS.radioBtnLink, constants.BUTTONS.radioBtnUrlVerify);
         // verify radio button elements are present snd select radio button 1
         button.verifyRadioBtns();
         browser.click(constants.SELECTORS.CSS, constants.BUTTONS.radioBtn1);
